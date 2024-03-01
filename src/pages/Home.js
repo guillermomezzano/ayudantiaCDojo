@@ -5,26 +5,28 @@ import CommentsList from "../componets/CommentsList";
 const Home = () => {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [clasificacion, setClasificacion] = useState(0);
 
   const handleInputChange = (e) => {
-    console.log(e);
-    console.log(e.target);
+    // console.log(e);
+    // console.log(e.target);
     setComment(e.target.value);
   };
 
   const sendComment = (e) => {
     e.preventDefault();
     setComments([...comments, comment]);
-    console.log("sendComment");
+    // console.log("sendComment");
     setComment("");
   };
 
   const removeCommnets = (index) => {
     const newComments = comments.filter((unComments, idx) => idx !== index);
-    console.log(newComments);
+    // console.log(newComments);
     setComments(newComments);
   };
 
+  console.log("clasificacion", clasificacion);
   return (
     <div>
       <h1>componente Home</h1>
@@ -42,7 +44,11 @@ const Home = () => {
           publicar
         </Button>
       </Form>
-      <CommentsList comments={comments} removeCommnets={removeCommnets} />
+      <CommentsList
+        comments={comments}
+        removeCommnets={removeCommnets}
+        setClasificacion={setClasificacion}
+      />
     </div>
   );
 };
@@ -105,7 +111,7 @@ export default Home;
 //           </Button>
 //         </Form>
 //         <CommentsList
-//           comments={this.state.comments}
+// comments={this.state.comments}
 //           removeCommnets={this.removeCommnets}
 //         />
 //       </div>

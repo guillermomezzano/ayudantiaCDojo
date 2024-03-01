@@ -1,6 +1,17 @@
 import React from "react";
 
-const CommentsList = ({ comments, removeCommnets }) => {
+const CommentsList = ({
+  comments,
+  removeCommnets,
+  clasificacion,
+  setClasificacion,
+}) => {
+  const handleInputChangeclasificacion = (e) => {
+    // const {value} = e.target
+    setClasificacion(e.target.value);
+    // console.log("handleInputChangeCalification", e.target.value);
+  };
+
   return (
     <div>
       <ul>
@@ -10,6 +21,12 @@ const CommentsList = ({ comments, removeCommnets }) => {
             <button onClick={() => removeCommnets(index)}>
               eliminar comentario
             </button>
+            <input
+              value={clasificacion}
+              type="number"
+              placeholder="clasificacion"
+              onChange={(e) => handleInputChangeclasificacion(e)}
+            ></input>
           </li>
         ))}
       </ul>
