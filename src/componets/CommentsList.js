@@ -1,24 +1,46 @@
-import React, { Component } from "react";
-import commentsList from "./commentslist.module.css";
+import React from "react";
 
-class CommentsList extends Component {
-  render() {
-    const { comments } = this.props;
-    console.log("comments de CommentsList", comments);
-    return (
-      <div>
-        <ul>
-          {comments.reverse().map((comment, index) => (
-            <li className={commentsList.ul}>
-              {comment}
-              <button onClick={() => this.props.removeComments(index)}>
-                eliminar comentario
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
+const CommentsList = ({ comments, removeCommnets }) => {
+  return (
+    <div>
+      <ul>
+        {comments.map((unComments, index) => (
+          <li key={index}>
+            {unComments}
+            <button onClick={() => removeCommnets(index)}>
+              eliminar comentario
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 export default CommentsList;
+
+// class components
+// import React, { Component } from "react";
+
+// class CommentsList extends Component {
+//   render() {
+//     const { comments } = this.props;
+//     console.log("CommentsList", comments);
+//     return (
+//       <div>
+//         <ul>
+//           {comments.map((unComments, index) => (
+//             <li key={index}>
+//               {unComments}
+//               <button onClick={() => this.props.removeCommnets(index)}>
+//                 eliminar comentario
+//               </button>
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     );
+//   }
+// }
+
+// export default CommentsList;

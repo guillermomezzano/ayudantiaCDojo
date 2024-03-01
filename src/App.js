@@ -6,8 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <div className="App">
-      <Layout title={"titulo"}>
-        <h1>hola chicos estoy dentro del root</h1>
+      <Layout title={"titulo del Layout"} footer={"titulo footer"}>
         <Home />
       </Layout>
     </div>
