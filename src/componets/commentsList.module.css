@@ -1,0 +1,14 @@
+
+li {
+    list-style:none
+}
+
+.button {
+    background:rgb(178, 32, 32);
+    color:white;
+    border-radius: 8px;
+}
+
+div {
+    margin: 5px;
+}

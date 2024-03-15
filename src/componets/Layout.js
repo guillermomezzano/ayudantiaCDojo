@@ -1,3 +1,4 @@
+// componentes funcionales
 import React from "react";
 
 const Layout = ({ children, title, footer }) => {

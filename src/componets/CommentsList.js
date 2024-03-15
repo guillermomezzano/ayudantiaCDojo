@@ -1,32 +1,40 @@
+// componentes funcionales
 import React from "react";
+
+import Button from "react-bootstrap/Button";
+import commentsList from "./commentsList.module.css";
 
 const CommentsList = ({
   comments,
   removeCommnets,
-  clasificacion,
-  setClasificacion,
+  editComment,
+  setEditMode,
 }) => {
-  const handleInputChangeclasificacion = (e) => {
-    // const {value} = e.target
-    setClasificacion(e.target.value);
-    // console.log("handleInputChangeCalification", e.target.value);
+  const reverseComments = [...comments].reverse();
+
+  const handleForEdition = (index) => {
+    editComment(index);
+    setEditMode(true);
   };
 
   return (
     <div>
       <ul>
-        {comments.map((unComments, index) => (
-          <li key={index}>
+        {reverseComments.map((unComments, index) => (
+          <li className={commentsList.li} key={index}>
             {unComments}
-            <button onClick={() => removeCommnets(index)}>
-              eliminar comentario
-            </button>
-            <input
-              value={clasificacion}
-              type="number"
-              placeholder="clasificacion"
-              onChange={(e) => handleInputChangeclasificacion(e)}
-            ></input>
+            <Button
+              variant="danger"
+              onClick={() => removeCommnets(comments.length - 1 - index)}
+            >
+              eliminar
+            </Button>
+            <Button
+              variant="warning"
+              onClick={() => handleForEdition(comments.length - 1 - index)}
+            >
+              editar
+            </Button>
           </li>
         ))}
       </ul>
