@@ -63,3 +63,30 @@ export const optionsFormSkill = [
         value: 6
     }
 ]
+
+export const optionsSkill = [
+    {
+        label: 'java basico',
+        value: {
+            nombre: 'java basico',
+            id_reference: '1-1',
+            nivel: "basico"
+        }
+    },
+    {
+        label: 'java intemedio',
+        value: {
+            nombre: 'java medio',
+            id_reference: '1-2',
+            nivel: "medio"
+        }
+    },
+    {
+        label: 'java avanzado',
+        value: {
+            nombre: 'java avanzado',
+            id_reference: '1-3',
+            nivel: "avanzado"
+        }
+    },
+]

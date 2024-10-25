@@ -1,5 +1,6 @@
 import NavBar from "./header/NavBar";
 import SideBar from "./sideBar/SideBar";
+import './layout.css'
 
 
 const Layout = ({ children }) => {
@@ -7,7 +8,9 @@ const Layout = ({ children }) => {
         <div>
             <NavBar />
             <SideBar />
-            {children}
+            <div className="conteiner">
+                {children}
+            </div>
         </div>
     )
 }

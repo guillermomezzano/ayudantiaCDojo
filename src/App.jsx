@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //componets
 
-// import FormStudent from './components/FormStudent'
+import FormPerson from './components/FormPerson'
 import ListCharacter from './components/ListCharacter'
 import Character from "./components/Character";
 // import ListStudent from "./components/ListStudent";
@@ -30,6 +30,7 @@ function App() {
       {/* <FormStudent /> */}
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<FormPerson />} />
           <Route path="/list" element={<ListCharacter />} />
           <Route path="/character/:id" element={<Character />} />
         </Routes>
