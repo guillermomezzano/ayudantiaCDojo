@@ -1,21 +1,30 @@
 import Axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ListCharacter = () => {
     const [characters, setCharacters] = useState([])
-    const navigate = useNavigate();
 
     const searchCharacters = async () => {
         try {
-            const response = await Axios.get("https://rickandmortyapi.com/api/character")
-            console.log(response.data.results)
-            setCharacters(response.data.results)
+            const response = await Axios.get("http://localhost:8080/personas")
+            console.log(response.data)
+            setCharacters(response.data)
         } catch (error) {
             console.log(error)
         }
     }
 
+    const handleDelete = async (id) => {
+        console.log(id)
+        try {
+            const response = await Axios.delete(`http://localhost:8080/persona/delete/${id}`)
+            searchCharacters()
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => {
         console.log(characters)
@@ -25,21 +34,15 @@ const ListCharacter = () => {
         searchCharacters()
     }, [])
 
-    const handleOnClick = (id) => {
-        console.log(id)
-        navigate(`/character/${id}`)
-    }
-
 
     return (
         <>
-            <h1>lista de personajes</h1>
+            <h1>lista de personas</h1>
             <ul>
                 {characters.map((unCharacters) => (
-                    <li key={unCharacters.id}>
-                        <img src={unCharacters.image} />
-                        <p>{unCharacters.name}</p>
-                        <button onClick={() => handleOnClick(unCharacters.id)}>ver personaje</button>
+                    <li key={unCharacters._id}>
+                        <Link to={`/character/${unCharacters._id}`}>{unCharacters.nombre}</Link>
+                        <button onClick={e => handleDelete(unCharacters._id)}>eliminar</button>
                     </li>
                 ))}
             </ul>
