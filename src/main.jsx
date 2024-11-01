@@ -4,10 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 
 import { GlobalProvider } from './components/context/global-contex'
+import AuthProvider from './components/context/authContex'
 
 createRoot(document.getElementById('root')).render(
+
     <GlobalProvider>
-        <App />
+        <AuthProvider>
+            <App />
+        </AuthProvider>
     </GlobalProvider>
 
 )

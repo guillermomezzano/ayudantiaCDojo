@@ -8,6 +8,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FormPerson from './components/FormPerson'
 import ListCharacter from './components/ListCharacter'
 import Character from "./components/Character";
+import SingIn from "./components/SingIn";
+import PrivateRoutes from "./components/routes/PrivateRoutes";
+import PublicRoutes from "./components/routes/PublicRoutes";
 // import ListStudent from "./components/ListStudent";
 // import TableStudent from "./components/TableStudent";
 // import NoteForm from "./components/NoteForm";
@@ -30,9 +33,15 @@ function App() {
       {/* <FormStudent /> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<FormPerson />} />
-          <Route path="/list" element={<ListCharacter />} />
-          <Route path="/character/:id" element={<Character />} />
+
+          <Route element={<PrivateRoutes />}>
+            <Route path="/list" element={<ListCharacter />} />
+            <Route path="/character/:id" element={<Character />} />
+          </Route>
+          <Route element={<PublicRoutes />}>
+            <Route path="/login" element={<SingIn />} />
+            <Route path="/" element={<FormPerson />} />
+          </Route>
         </Routes>
       </BrowserRouter>
 
